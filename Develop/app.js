@@ -10,6 +10,82 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const question = [
+  {
+    type: "input",
+    message: "What is your manager's name?",
+    name: "managerName"
+  },
+  {
+    type: "input",
+    message: "What is your manager's id?",
+    name: "managerId"
+  },
+  {
+    type: "input",
+    message: "What is your manager's email?",
+    name: "managerEmail"
+  },
+  {
+    type: "input",
+    message: "What is your manager's office number?",
+    name: "managerOfficeNumber"
+  }
+];
+
+const employeeType = [
+  {
+    type: "list",
+    message: "Which type of team member would you like to add?",
+    choice: ["Engineer", "Intern", "I don't want to add any more team member"]
+  }
+];
+
+const addEngineerQustion = [
+  {
+    type: "input",
+    message: "What is your engineer's name?",
+    name: "engineerName"
+  },
+  {
+    type: "input",
+    message: "What is your engineer's Id?",
+    name: "engineerId"
+  },
+  {
+    type: "input",
+    message: "What is your engineer's email?",
+    name: "engineerEmail"
+  },
+  {
+    type: "input",
+    message: "What is your engineer's GitHub username?",
+    name: "engineerGithub"
+  }
+];
+
+const addInternQustion = [
+  {
+    type: "input",
+    message: "What is your intern's name?",
+    name: "internName"
+  },
+  {
+    type: "input",
+    message: "What is your intern's Id?",
+    name: "internId"
+  },
+  {
+    type: "input",
+    message: "What is your intern's email?",
+    name: "internEmail"
+  },
+  {
+    type: "input",
+    message: "What is your intern's school?",
+    name: "internSchool"
+  }
+];
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
