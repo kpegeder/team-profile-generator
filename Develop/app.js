@@ -10,7 +10,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-const question = [
+const questions = [
   {
     type: "input",
     message: "What is your manager's name?",
@@ -37,7 +37,8 @@ const employeeType = [
   {
     type: "list",
     message: "Which type of team member would you like to add?",
-    choice: ["Engineer", "Intern", "I don't want to add any more team member"]
+    name: "teamType",
+    choices: ["Engineer", "Intern", "I don't want to add any more team member"]
   }
 ];
 
@@ -87,6 +88,21 @@ const addInternQustion = [
   }
 ];
 
+async function promptUser() {
+  // Create array for team members
+  const arrayIntern = [];
+  const arrayEngineer = [];
+
+  // Get answers for manager
+  let answers = await inquirer.prompt(questions);
+
+  // Type of team member
+  let memberType = await inquirer.prompt(employeeType);
+  console.log(memberType);
+  // while (!newMember)
+}
+
+promptUser();
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
