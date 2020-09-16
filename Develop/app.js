@@ -42,7 +42,7 @@ const employeeType = [
   }
 ];
 
-const addEngineerQustion = [
+const addEngineerQuestion = [
   {
     type: "input",
     message: "What is your engineer's name?",
@@ -65,7 +65,7 @@ const addEngineerQustion = [
   }
 ];
 
-const addInternQustion = [
+const addInternQuestion = [
   {
     type: "input",
     message: "What is your intern's name?",
@@ -89,20 +89,43 @@ const addInternQustion = [
 ];
 
 async function promptUser() {
-  // Create array for team members
+  // Create array for team members and object
   const arrayIntern = [];
   const arrayEngineer = [];
+  const arrayManager = [];
+  const answers = {};
 
   // Get answers for manager
-  let answers = await inquirer.prompt(questions);
+  let manager = await inquirer.prompt(questions);
+  arrayManager.push(manager);
 
   // Type of team member
   let memberType = await inquirer.prompt(employeeType);
-  console.log(memberType);
-  // while (!newMember)
+  console.log(memberType.teamType);
+  while (memberType.teamType != "I don't want to add any more team member") {
+    switch (memberType.teamType) {
+      case "Engineer":
+        let engineer = await inquirer.prompt(addEngineerQuestion);
+        arrayEngineer.push(engineer);
+        memberType = await inquirer.prompt(employeeType);
+        break;
+      case "Intern":
+        let intern = await inquirer.prompt(addInternQuestion);
+        arrayIntern.push(intern);
+        memberType = await inquirer.prompt(employeeType);
+        break;
+    }
+  }
+
+  answers.Manager = arrayManager;
+  answers.Engineer = arrayEngineer;
+  answers.Intern = arrayIntern;
+  render(answers);
+  return answers;
 }
 
 promptUser();
+
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
