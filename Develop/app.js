@@ -10,6 +10,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+// List of questions
 const questions = [
   {
     type: "input",
@@ -26,7 +27,8 @@ const questions = [
   {
     type: "input",
     message: "What is your manager's email?",
-    name: "managerEmail"
+    name: "managerEmail",
+    validate: verifyEmail
   },
   {
     type: "input",
@@ -61,12 +63,14 @@ const addEngineerQuestion = [
   {
     type: "input",
     message: "What is your engineer's email?",
-    name: "engineerEmail"
+    name: "engineerEmail",
+    validate: verifyEmail
   },
   {
     type: "input",
     message: "What is your engineer's GitHub username?",
-    name: "engineerGithub"
+    name: "engineerGithub",
+    validate: verifyGithub
   }
 ];
 
@@ -86,7 +90,8 @@ const addInternQuestion = [
   {
     type: "input",
     message: "What is your intern's email?",
-    name: "internEmail"
+    name: "internEmail",
+    validate: verifyEmail
   },
   {
     type: "input",
@@ -146,15 +151,14 @@ async function promptUser() {
 async function init() {
   const team = await promptUser();
 
-  const write = render(team);
+  // const write = render(team);
 
-  fs.writeFileSync(outputPath, write);
+  fs.writeFileSync(outputPath, render(team));
 }
 
 init();
 
 // Validation functions
-
 function verifyNumber(input) {
   if (isNaN(input) || input === "") {
     return "Please enter a number";
@@ -181,11 +185,31 @@ function verifyName(name) {
 
 function verifySchool(name) {
   if (name === "") {
-    return "Please enter a name";
+    return "Please enter a school name";
   } else if (!isNaN(name)) {
     return "Please don't enter a number";
   } else if (name.length > 26) {
     return "Please enter a shorter school name";
+  }
+  return true;
+}
+
+function verifyEmail(name) {
+  if (name === "") {
+    return "Please enter an email name";
+  } else if (!name.includes("@")) {
+    return "Please enter an email with @";
+  } else if (name.length > 26) {
+    return "Please enter a shorter name";
+  }
+  return true;
+}
+
+function verifyGithub(name) {
+  if (name === "") {
+    return "Please enter a name";
+  } else if (name.length > 39) {
+    return "Please enter a shorter username";
   }
   return true;
 }
