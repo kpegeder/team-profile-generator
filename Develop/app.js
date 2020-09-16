@@ -14,7 +14,8 @@ const questions = [
   {
     type: "input",
     message: "What is your manager's name?",
-    name: "managerName"
+    name: "managerName",
+    validate: verifyName
   },
   {
     type: "input",
@@ -48,7 +49,8 @@ const addEngineerQuestion = [
   {
     type: "input",
     message: "What is your engineer's name?",
-    name: "engineerName"
+    name: "engineerName",
+    validate: verifyName
   },
   {
     type: "input",
@@ -72,7 +74,8 @@ const addInternQuestion = [
   {
     type: "input",
     message: "What is your intern's name?",
-    name: "internName"
+    name: "internName",
+    validate: verifyName
   },
   {
     type: "input",
@@ -88,7 +91,8 @@ const addInternQuestion = [
   {
     type: "input",
     message: "What is your intern's school?",
-    name: "internSchool"
+    name: "internSchool",
+    validate: verifySchool
   }
 ];
 
@@ -163,10 +167,28 @@ function verifyNumber(input) {
   return true;
 }
 
-// function verifyName(name) {
+function verifyName(name) {
+  if (name === "") {
+    return "Please enter a name";
+  } else if (!isNaN(name)) {
+    return "Please don't enter a number";
+  } else if (name.length > 26) {
+    return "Please enter a shorter name";
+  }
 
-// }
+  return true;
+}
 
+function verifySchool(name) {
+  if (name === "") {
+    return "Please enter a name";
+  } else if (!isNaN(name)) {
+    return "Please don't enter a number";
+  } else if (name.length > 26) {
+    return "Please enter a shorter school name";
+  }
+  return true;
+}
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
