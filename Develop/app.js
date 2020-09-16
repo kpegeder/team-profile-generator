@@ -89,39 +89,50 @@ const addInternQuestion = [
 ];
 
 async function promptUser() {
-  // Create array for team members and object
-  const arrayIntern = [];
-  const arrayEngineer = [];
-  const arrayManager = [];
-  const answers = {};
+  // Create array for team members
+  const employee = [];
 
   // Get answers for manager
-  let manager = await inquirer.prompt(questions);
-  arrayManager.push(manager);
+  let ansMan = await inquirer.prompt(questions);
+  const manager = new Manager(
+    ansMan.managerName,
+    ansMan.managerId,
+    ansMan.managerEmail,
+    ansMan.managerOfficeNumber
+  );
 
   // Type of team member
   let memberType = await inquirer.prompt(employeeType);
-  console.log(memberType.teamType);
+
   while (memberType.teamType != "I don't want to add any more team member") {
     switch (memberType.teamType) {
       case "Engineer":
-        let engineer = await inquirer.prompt(addEngineerQuestion);
-        arrayEngineer.push(engineer);
+        let ansEng = await inquirer.prompt(addEngineerQuestion);
+        const engineer = new Engineer(
+          ansEng.engineerName,
+          ansEng.engineerId,
+          ansEng.engineerEmail,
+          ansEng.engineerGithub
+        );
+        employee.push(engineer);
         memberType = await inquirer.prompt(employeeType);
         break;
       case "Intern":
-        let intern = await inquirer.prompt(addInternQuestion);
-        arrayIntern.push(intern);
+        let ansInt = await inquirer.prompt(addInternQuestion);
+        const intern = new Intern(
+          ansInt.internName,
+          ansInt.internId,
+          ansInt.internEmail,
+          ansInt.internSchool
+        );
+        employee.push(intern);
         memberType = await inquirer.prompt(employeeType);
         break;
     }
   }
 
-  answers.Manager = arrayManager;
-  answers.Engineer = arrayEngineer;
-  answers.Intern = arrayIntern;
-  render(answers);
-  return answers;
+  employee.push(manager);
+  return employee;
 }
 
 promptUser();
