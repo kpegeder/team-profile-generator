@@ -135,8 +135,15 @@ async function promptUser() {
   return employee;
 }
 
-promptUser();
+async function init() {
+  const team = await promptUser();
 
+  const write = render(team);
+
+  fs.writeFileSync(outputPath, write);
+}
+
+init();
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
