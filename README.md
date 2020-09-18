@@ -2,6 +2,12 @@
 
 ![License Badge](https://img.shields.io/badge/License-MIT-blue)
 
+## _Links_
+
+Deployed URL: https://kpegeder.github.io/team-profile-generator/Develop/output/team.html
+
+Github Code URL: https://github.com/mx6/Bootcamp_Project_1
+
 ## Description
 
 The app.js file is a command line application to build a software engineering team. You will be prompted to answer a set of questions about the manager, engineers and interns. There can only be one manager on the team, but there is no limit on the team size. When finished adding team members, the application will create an HTML file that displays your team.
