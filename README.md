@@ -36,8 +36,8 @@ Each of the questions must be answer to continue. If the answer doesn't fit the 
 2. Answer each of the question
 3. Team file is generated in the Develop/output
 
-![Console Demo](./assets/console.png)
-![Website Demo](./assets/team.png)
+![Console Demo](./Develop/assets/console.png)
+![Website Demo](./Develop/assets/team.png)
 
 ## Test
 
