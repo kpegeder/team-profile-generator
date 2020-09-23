@@ -6,7 +6,7 @@
 
 Deployed URL: https://kpegeder.github.io/team-profile-generator/Develop/output/team.html
 
-Github Code URL: https://github.com/mx6/Bootcamp_Project_1
+Github Code URL: https://github.com/kpegeder/team-profile-generator
 
 ## Description
 
