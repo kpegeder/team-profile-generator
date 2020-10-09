@@ -16,26 +16,26 @@ const questions = [
     type: "input",
     message: "What is your manager's name?",
     name: "managerName",
-    validate: verifyName
+    validate: verifyName,
   },
   {
     type: "input",
     message: "What is your manager's id?",
     name: "managerId",
-    validate: verifyNumber
+    validate: verifyNumber,
   },
   {
     type: "input",
     message: "What is your manager's email?",
     name: "managerEmail",
-    validate: verifyEmail
+    validate: verifyEmail,
   },
   {
     type: "input",
     message: "What is your manager's office number?",
     name: "managerOfficeNumber",
-    validate: verifyNumber
-  }
+    validate: verifyNumber,
+  },
 ];
 
 const employeeType = [
@@ -43,8 +43,8 @@ const employeeType = [
     type: "list",
     message: "Which type of team member would you like to add?",
     name: "teamType",
-    choices: ["Engineer", "Intern", "I don't want to add any more team member"]
-  }
+    choices: ["Engineer", "Intern", "I don't want to add any more team member"],
+  },
 ];
 
 const addEngineerQuestion = [
@@ -52,26 +52,26 @@ const addEngineerQuestion = [
     type: "input",
     message: "What is your engineer's name?",
     name: "engineerName",
-    validate: verifyName
+    validate: verifyName,
   },
   {
     type: "input",
     message: "What is your engineer's Id?",
     name: "engineerId",
-    validate: verifyNumber
+    validate: verifyNumber,
   },
   {
     type: "input",
     message: "What is your engineer's email?",
     name: "engineerEmail",
-    validate: verifyEmail
+    validate: verifyEmail,
   },
   {
     type: "input",
     message: "What is your engineer's GitHub username?",
     name: "engineerGithub",
-    validate: verifyGithub
-  }
+    validate: verifyGithub,
+  },
 ];
 
 const addInternQuestion = [
@@ -79,26 +79,26 @@ const addInternQuestion = [
     type: "input",
     message: "What is your intern's name?",
     name: "internName",
-    validate: verifyName
+    validate: verifyName,
   },
   {
     type: "input",
     message: "What is your intern's Id?",
     name: "internId",
-    validate: verifyNumber
+    validate: verifyNumber,
   },
   {
     type: "input",
     message: "What is your intern's email?",
     name: "internEmail",
-    validate: verifyEmail
+    validate: verifyEmail,
   },
   {
     type: "input",
     message: "What is your intern's school?",
     name: "internSchool",
-    validate: verifySchool
-  }
+    validate: verifySchool,
+  },
 ];
 
 async function promptUser() {
@@ -147,8 +147,6 @@ async function promptUser() {
 
 async function init() {
   const team = await promptUser();
-
-  // const write = render(team);
 
   fs.writeFileSync(outputPath, render(team));
 }
